@@ -4,14 +4,15 @@ import { Button } from "baseui/button";
 import { Skeleton } from "baseui/skeleton";
 
 
-const ListingCard = () => {
-    return (
+const ListingCard = ({content}) => {
+  console.log(content)  
+  return (
         <Card
       overrides={{Root: {style: {width: '328px'}}}}
       headerImage={
-        'https://source.unsplash.com/user/erondu/700x400'
+         content.ListingImages[0] 
       }
-      title="Example card"
+      title={content.Title}
     >
       <StyledBody>
         Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla

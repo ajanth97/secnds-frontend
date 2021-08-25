@@ -22,7 +22,15 @@ const LandingPage: React.FC = (props:RouteComponentProps) => {
         return <div>Error failed to Load</div>
     }
     if (!data) return <StyledSpinnerNext/> 
-    console.log(data)
+
+    function createListingCard(content){
+      return (
+        <FlexGridItem key={content.ID} {...itemProps}><ListingCard content={content}/></FlexGridItem> 
+      )
+    }
+
+    const listingCards = data.map(createListingCard)
+    
     return (
         <Layer>
         <FlexGrid
@@ -30,12 +38,7 @@ const LandingPage: React.FC = (props:RouteComponentProps) => {
         flexGridColumnGap="scale800"
         flexGridRowGap="scale800"
       >
-        <FlexGridItem {...itemProps}><ListingCard/></FlexGridItem>
-        <FlexGridItem {...itemProps}><ListingCard/></FlexGridItem>
-        <FlexGridItem {...itemProps}><ListingCard/></FlexGridItem>
-        <FlexGridItem {...itemProps}><ListingCard/></FlexGridItem>
-        <FlexGridItem {...itemProps}><ListingCard/></FlexGridItem>
-        <FlexGridItem {...itemProps}><ListingCard/></FlexGridItem>
+        {listingCards}
       </FlexGrid>
       </Layer>
     )
