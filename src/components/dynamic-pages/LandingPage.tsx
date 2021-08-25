@@ -3,7 +3,7 @@ import { RouteComponentProps } from "@reach/router"
 import ListingCard from "../ListingCard";
 import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
 import { Layer } from "baseui/layer";
-import {Spinner} from 'baseui/spinner';
+import {StyledSpinnerNext} from 'baseui/spinner';
 
 import useSWR from 'swr'
 
@@ -21,8 +21,8 @@ const LandingPage: React.FC = (props:RouteComponentProps) => {
         console.log(error) 
         return <div>Error failed to Load</div>
     }
-    if (!data) return <Spinner/> 
-
+    if (!data) return <StyledSpinnerNext/> 
+    console.log(data)
     return (
         <Layer>
         <FlexGrid
