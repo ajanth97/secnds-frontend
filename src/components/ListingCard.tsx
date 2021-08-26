@@ -8,9 +8,9 @@ const ListingCard = ({content}) => {
         <Card
       overrides={{Root: {style: {width: '328px'}}}}
       headerImage={
-         content.ListingImages[0] 
+         content.listingImages[0] 
       }
-      title={content.Title}
+      title={content.title}
     >
       <StyledBody>
         Proin ut dui sed metus pharetra hend rerit vel non mi. Nulla

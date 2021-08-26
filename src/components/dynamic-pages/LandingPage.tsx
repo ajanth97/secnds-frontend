@@ -25,7 +25,7 @@ const LandingPage: React.FC = (props:RouteComponentProps) => {
 
     function createListingCard(content){
       return (
-        <FlexGridItem key={content.ID} {...itemProps}><ListingCard content={content}/></FlexGridItem> 
+        <FlexGridItem key={content.id} {...itemProps}><ListingCard content={content}/></FlexGridItem> 
       )
     }
 
