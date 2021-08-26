@@ -7,7 +7,6 @@ import {
   } from "baseui/card";
 import { Button } from "baseui/button";
 import { Layer } from "baseui/layer";
-import { StyledLink } from "baseui/link";
 import {Link} from "gatsby"
 
 
@@ -24,7 +23,7 @@ const Login = () => {
         <br/>
         <Input placeholder="Password" type="password"/>
         <br/>
-        If you are new here <Link to="/signup"><StyledLink>Sign up</StyledLink></Link>  
+        If you are new here <Link to="/signup">Sign up</Link>
         </StyledBody>
         <StyledAction>
           <Button overrides={{BaseButton: {style: {width: '100%'}}}}>

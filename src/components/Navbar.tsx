@@ -45,12 +45,12 @@ const Navbar = () => {
                         </StyledLink>
                         </StyledNavigationItem>
                     </StyledNavigationList>
-                    <StyledNavigationList $align={ALIGN.right}>
-                        <Link to="/login">
+                    <StyledNavigationList $align={ALIGN.right}>                        
                         <StyledNavigationItem>
+                        <Link to="/login">
                         <Button>Log in</Button>
-                        </StyledNavigationItem>
                         </Link>
+                        </StyledNavigationItem>
                     </StyledNavigationList>
                     </HeaderNavigation>
              </Layer>
