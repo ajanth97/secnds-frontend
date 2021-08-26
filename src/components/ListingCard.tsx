@@ -5,7 +5,6 @@ import { Skeleton } from "baseui/skeleton";
 
 
 const ListingCard = ({content}) => {
-  console.log(content)  
   return (
         <Card
       overrides={{Root: {style: {width: '328px'}}}}
