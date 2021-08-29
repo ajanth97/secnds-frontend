@@ -4,8 +4,9 @@ import ListingCard from "../ListingCard";
 import {FlexGrid, FlexGridItem} from 'baseui/flex-grid';
 import { Layer } from "baseui/layer";
 import {StyledSpinnerNext} from 'baseui/spinner';
+import { useUser } from "../../hooks/useUser";
+import useSWR from "swr";
 
-import useSWR from 'swr'
 
 const itemProps = {
     display: 'flex',
@@ -14,23 +15,22 @@ const itemProps = {
   };
 
 const fetcher = (...args) => fetch(...args).then(res => res.json())
-   
-const LandingPage: React.FC = (props:RouteComponentProps) => {
-    const {data, error} = useSWR('https://secnds-server.herokuapp.com/listing/all', fetcher)    
+
+const LandingPage = () => {
+   const {data, error} = useSWR('https://secnds-server.herokuapp.com/listing/all', fetcher)    
     if (error){
-        console.log(error) 
         return <div>Error failed to Load</div>
     }
-    if (!data) return <StyledSpinnerNext/> 
+    
+    if (!data && !error) return <StyledSpinnerNext/> 
+    if (error) return (<div>Login failed invalid token</div>)
 
     function createListingCard(content){
       return (
         <FlexGridItem key={content.id} {...itemProps}><ListingCard content={content}/></FlexGridItem> 
       )
     }
-
-    const listingCards = data.map(createListingCard)
-    
+     const listingCards = data.map(createListingCard)
     return (
         <Layer>
         <FlexGrid
@@ -38,7 +38,7 @@ const LandingPage: React.FC = (props:RouteComponentProps) => {
         flexGridColumnGap="scale800"
         flexGridRowGap="scale800"
       >
-        {listingCards}
+       {listingCards}
       </FlexGrid>
       </Layer>
     )

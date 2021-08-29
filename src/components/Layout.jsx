@@ -3,8 +3,7 @@ import {Client as Styletron} from 'styletron-engine-atomic';
 import {Provider as StyletronProvider} from 'styletron-react';
 import {LightTheme, BaseProvider, styled} from 'baseui';
 import { Layer } from "baseui/layer";
-import Navbar from "./Navbar";
-
+import { NewNavbar } from "./NewNavbar";
 
 const Centered = styled('div', {
     display: 'flex',
@@ -33,7 +32,7 @@ const Layout = ({children}) => {
         <StyletronProvider value={engine}>
             <BaseProvider theme={LightTheme}>
             <Centered>
-               <Navbar/>
+               <NewNavbar/>
                <main>
                    <Layer>
                    {children}

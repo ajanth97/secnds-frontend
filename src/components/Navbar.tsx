@@ -10,12 +10,15 @@ import {
   import { Layer } from "baseui/layer";
   import {StatefulSelect as Search, TYPE} from 'baseui/select';
   import {Link} from "gatsby"
+  import {useUser} from "../hooks/useUser"
 
-
-
+  const ITEMS = [
+    {label: 'My Account'},
+    {label: 'Log out'},
+  ]
 
 const Navbar = () => {
-   
+const {user, isLoading, isError} = useUser()
     return (
         <header>          
                 <Layer>
@@ -47,9 +50,23 @@ const Navbar = () => {
                     </StyledNavigationList>
                     <StyledNavigationList $align={ALIGN.right}>                        
                         <StyledNavigationItem>
+                        {isLoading ? 
+                        (<Button isLoading></Button>) 
+                        :
+                        isError ? (
                         <Link to="/login">
-                        <Button>Log in</Button>
+                            <Button>Log in</Button>
                         </Link>
+                        ) :(
+                        <React.Fragment>
+                            <Link to="/login">
+                                <Button>Hi, {user.firstName}</Button>
+                            </Link>
+                        </React.Fragment>
+                        )
+                        }
+                        
+                        
                         </StyledNavigationItem>
                     </StyledNavigationList>
                     </HeaderNavigation>
